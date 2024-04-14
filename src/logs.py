@@ -23,11 +23,13 @@ def help():
     print("  --help, -h\tdisplay this help message")
     print("  --version, -v\tdisplay the version")
     print("  --info, -i\tdisplay information about the interpreter")
+    print("  --out [filename] [output_path], -o [filename] [output_path]\toutput the result of the script to a file")
     print("\nArguments:")
     print("  filename\tthe file to run")
     print("  repl\trun the REPL")
-    print("\nExample:")
+    print("\nExamples:")
     print("  python main.py script.bf")
+    print("  python main.py --out script.bf output.txt")
 
 def info():
     print("brainfk compiler is an attempt to create a compiler for the brainf\*\*k programming language. This project is created to learn more about compilers and how they work. The project is written in Python and does not use any external libraries (other than the standard library and colors).\n")

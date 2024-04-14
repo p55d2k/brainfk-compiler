@@ -4,7 +4,7 @@ from src.repl import repl
 import sys
 import os
 
-def run(file):
+def run(file, output=None):
     if not os.path.exists(file):
         logs.runError(f"file '{file}' not found")
         return
@@ -12,14 +12,24 @@ def run(file):
     with open(file, 'r') as f:
         code = f.read()
         interpreter = Interpreter(code)
-        print(interpreter.run())
+        decoded = interpreter.run()
+        print(decoded)
+
+        if output:
+            with open(output, 'w') as f:
+                f.write(decoded)
+            print(f"Output written to '{output}'")
 
 def main():
     args = sys.argv[1:]
     if args == []:
         repl()
     elif len(args) > 1:
-        logs.runError("too many arguments")
+        if len(args) > 3:
+            logs.runError("too many arguments")
+        else:
+            if args[0] == "--out" or args[0] == "-o":
+                run(args[1], args[2])
     elif args[0] == "repl":
         repl()
     elif args[0] == "--help" or args[0] == "-h":
