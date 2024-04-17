@@ -1,4 +1,5 @@
 import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 if not os.path.exists('input.txt'):
     print("file 'input.txt' not found")
     exit()
